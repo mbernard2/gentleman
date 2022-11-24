@@ -186,8 +186,6 @@ const _ReferenceConcept = {
 
         this.model.removeConcept(this.id);
 
-        this.notify("delete");
-
         return {
             message: `The concept '${name}' was successfully deleted.`,
             success: true,

@@ -393,7 +393,6 @@ const _Concept = {
         try {
             this.notify("delete");
             this.model.removeConcept(this.id);
-            this.notify("delete");
         } catch (error) {
             console.error(this);
             return {

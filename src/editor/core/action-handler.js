@@ -19,7 +19,17 @@ export const ActionHandler = {
     "add-group": (target) => {
         this.status.addGroup();
     },
+    "export--copy": (target) => {
+        this.export(true);
+    },
+    "delete": (target) => {
+        const { target: actionTarget } = target.dataset;
 
-    "export--copy": (target) => { this.export(true); },
+        if (actionTarget === "parent") {
+            let parent = target.parentElement;
+            removeChildren(parent);
+            parent.remove();
+        }
+    }
 
 };
