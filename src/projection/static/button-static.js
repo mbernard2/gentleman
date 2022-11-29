@@ -190,6 +190,11 @@ const BaseButtonStatic = {
                         attr.target.createElement({ value: value });
                     }
                     break;
+                case "CREATE-CONCRETE":
+                    if (target.type === "attribute") {
+                        let attr = concept.getAttribute(target.name);
+                        attr.target.createConcreteElement(value.name);
+                    }
                 case "SELECT":
                     if (isNullOrUndefined(target)) {
                         concept.createElement();

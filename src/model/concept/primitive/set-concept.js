@@ -316,6 +316,10 @@ const _SetConcept = {
 
         return element;
     },
+    createConcreteElement(conceptName) {
+        const element = this.model.createConcept(conceptName);
+        this.addElement(element);
+    },
 
     /**
      * Gets the value of a property
