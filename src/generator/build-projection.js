@@ -1462,7 +1462,7 @@ function buildFieldTemplate(element) {
     const schema = {};
 
     if (hasAttr(element, ATTR_TAG) && hasValue(element, ATTR_TAG)) {
-        schema[ATTR_TAG] = getValue(element, ATTR_TAG);
+        schema[ATTR_TAG] = getValue(element, ATTR_TAG, true).value;
     }
 
     if (hasAttr(element, ATTR_NAME) && hasValue(element, ATTR_NAME)) {
