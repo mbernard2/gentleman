@@ -18,6 +18,7 @@ const sources = [
 const samples = [
     './assets/css/samples/gentleman.css',
     './assets/css/samples/projection.css',
+    './assets/css/samples/templates.css',
     './assets/css/samples/style.css',
 ];
 

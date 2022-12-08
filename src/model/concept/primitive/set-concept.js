@@ -316,8 +316,9 @@ const _SetConcept = {
 
         return element;
     },
-    createConcreteElement(conceptName) {
-        const element = this.model.createConcept(conceptName);
+    createConcreteElement(_value) {
+        let value = this.model.getValue(_value);
+        const element = this.model.createConcept(value.value.name);
         this.addElement(element);
     },
 

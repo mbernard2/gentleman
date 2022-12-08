@@ -1,0 +1,2310 @@
+{
+    "type": "projection",
+    "projection": [
+        {
+            "concept": {
+                "name": "file"
+            },
+            "tags": [
+                "file-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": true,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "Name:"
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "name",
+                                "tag": "select-value",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a value"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "focusable": true
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "name",
+                        "tag": "dynamic-value"
+                    },
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": true,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "Contents:"
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "contents",
+                        "tag": "value-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "text"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "TXT",
+                        "style": {
+                            "css": ["template-label"]
+                        }
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "contents",
+                        "tag": "string-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "row",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "for-each"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "FOREACH",
+                                "style": {
+                                    "css": ["template-label"]
+                                }
+                            },
+                            {
+                                "kind": "dynamic",
+                                "type": "attribute",
+                                "name": "varname",
+                                "tag": "string-proj",
+                                "required": true,
+                                "listen": false,
+                                "placeholder": []
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
+                    },
+                    {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "in"
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "in",
+                                "tag": "select-value",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a value"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "in",
+                        "tag": "dynamic-value"
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "outputs",
+                        "tag": "value-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "for-each-file"
+            },
+            "tags": [],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "Variable name:"
+                            },
+                            {
+                                "kind": "dynamic",
+                                "type": "attribute",
+                                "name": "varname",
+                                "tag": "string-proj",
+                                "required": true,
+                                "listen": false,
+                                "placeholder": []
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
+                    },
+                    {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "in"
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "in",
+                                "tag": "select-value",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a value"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "in",
+                        "tag": "dynamic-value"
+                    },
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "File:"
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "file",
+                        "tag": "file-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "condition"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "COND",
+                        "style": {
+                            "css": ["template-label"]
+                        }
+                    },
+                    {
+                        "kind": "static",
+                        "type": "button",
+                        "focusable": true,
+                        "hidden": false,
+                        "trigger": false,
+                        "disabled": false,
+                        "action": {
+                            "type": "CREATE-CONCRETE",
+                            "target": { "type": "attribute", "name": "branches" },
+                            "value": { "name": "condition-branch" }
+                        },
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": true,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "+BRANCH"
+                            }
+                        ],
+                        "style": {
+                            "css": ["container__btn-element"]
+                        }
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "branches",
+                        "tag": "cond-branch-set-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "condition-branch"
+            },
+            "tags": [
+                "branch-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "IF"
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "if",
+                        "tag": "select-value",
+                        "required": true,
+                        "options": {
+                            "placeholder": "Select a value"
+                        }
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "if",
+                        "tag": "dynamic-value"
+                    },
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "THEN"
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "then",
+                        "tag": "value-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": false
+            }
+        },
+        {
+            "concept": {
+                "name": "let"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "LET",
+                                "style": {
+                                    "css": ["template-label"]
+                                }
+                            },
+                            {
+                                "kind": "static",
+                                "type": "button",
+                                "focusable": true,
+                                "hidden": false,
+                                "trigger": false,
+                                "disabled": false,
+                                "action": {
+                                    "type": "CREATE-CONCRETE",
+                                    "target": { "type": "attribute", "name": "defs" },
+                                    "value": { "name": "let-def" }
+                                },
+                                "content": [
+                                    {
+                                        "kind": "static",
+                                        "type": "text",
+                                        "focusable": true,
+                                        "hidden": false,
+                                        "asHTML": true,
+                                        "content": "+DEF"
+                                    }
+                                ],
+                                "style": {
+                                    "css": ["container__btn-element"]
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "defs",
+                        "tag": "let-def-set-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "in",
+                        "tag": "value-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "let-def"
+            },
+            "tags": [
+                "let-def-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "dynamic",
+                                "type": "attribute",
+                                "name": "name",
+                                "tag": "string-proj",
+                                "required": true,
+                                "listen": false,
+                                "placeholder": []
+                            },
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "="
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "value",
+                                "tag": "select-value",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a value"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "value",
+                        "tag": "dynamic-value"
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": false
+            }
+        },
+        {
+            "concept": {
+                "name": "output-sequence"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "type": "template",
+                        "name": "creation-button-list",
+                        "param": [
+                            { "name": "target-attribute", "value": "items" }
+                        ]
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "items",
+                        "tag": "value-set-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true,
+                "style": {
+                    "css": ["template-output-sequence"]
+                }
+            }
+        },
+        {
+            "concept": {
+                "name": "call"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "CALL",
+                        "style": {
+                            "css": ["template-label"]
+                        }
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "fn-name",
+                        "tag": "string-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    },
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "Arguments:"
+                    },
+                    {
+                        "type": "template",
+                        "name": "creation-button-list",
+                        "param": [
+                            { "name": "target-attribute", "value": "args" }
+                        ]
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "args",
+                        "tag": "value-set-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true,
+                "style": {
+                    "css": ["template-output-sequence"]
+                }
+            }
+        },
+        {
+            "concept": {
+                "name": "member-access"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "MEMBER",
+                                "style": {
+                                    "css": ["template-label"]
+                                }
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "object",
+                                "tag": "select-value",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a value"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "object",
+                        "tag": "dynamic-value"
+                    },
+                    {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "Attribute:"
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "attr-name",
+                                "tag": "string-proj",
+                                "required": true
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "concept-set"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "CONCEPTS",
+                        "style": {
+                            "css": ["template-label"]
+                        }
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "concept-name",
+                        "tag": "string-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "row",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "var"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "VAR",
+                        "style": {
+                            "css": ["template-label"]
+                        }
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "var-name",
+                        "tag": "string-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "row",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "number-literal"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "NUM",
+                        "style": {
+                            "css": ["template-label"]
+                        }
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "value",
+                        "tag": "number-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "row",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "bool-literal"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "BOOL",
+                        "style": {
+                            "css": ["template-label"]
+                        }
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "value",
+                        "tag": "bool-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "row",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "set-literal"
+            },
+            "tags": [
+                "value-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": false,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "SET",
+                        "style": {
+                            "css": ["template-label"]
+                        }
+                    },
+                    {
+                        "type": "template",
+                        "name": "creation-button-list",
+                        "param": [
+                            { "name": "target-attribute", "value": "items" }
+                        ]
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "items",
+                        "tag": "value-set-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "value"
+            },
+            "tags": [
+                "select-value"
+            ],
+            "type": "field",
+            "content": {
+                "type": "choice",
+                "choice": {
+                    "option": {
+                        "template": { "tag": "choice" },
+                        "style": {
+                            "css": ["select-choice__list-option"]
+                        }
+                    },
+                    "style": {
+                        "css": ["select-choice__list"]
+                    }
+                },
+                "expanded": false,
+                "input": false,
+                "style": {
+                    "css": ["select-choice"]
+                }
+            }
+        },
+        {
+            "concept":{ "name": "text" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Text",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "for-each" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "For Each",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "condition" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Condition",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "let" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Let",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "output-sequence" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Output Sequence",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "call" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Call",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "member-access" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Member Access",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "concept-set" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Concept Set",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "var" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Var",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "number-literal" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Number Literal",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "bool-literal" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Bool Literal",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "set-literal" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Set Literal",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept": { "name": "value" },
+            "tags": ["dynamic-value"],
+            "type": "layout",
+            "content": {
+                "type": "flex",
+                "orientation": "horizontal",
+                "disposition": [
+                    {
+                        "type": "projection",
+                        "bind": "value",
+                        "placeholder": false,
+                        "tag": "value-proj"
+                    }
+                ]
+            }
+        },
+        {
+            "concept": {
+                "name": "function"
+            },
+            "tags": [],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "name",
+                        "tag": "string-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    },
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Params:",
+                        "focusable": false
+                    },
+                    {
+                        "kind": "static",
+                        "type": "button",
+                        "focusable": true,
+                        "hidden": false,
+                        "trigger": false,
+                        "disabled": false,
+                        "action": {
+                            "type": "CREATE-CONCRETE",
+                            "target": {
+                                "type": "attribute",
+                                "name": "params"
+                            },
+                            "value": { "name": "function-param" }
+                        },
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": true,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "+PARAM"
+                            }
+                        ],
+                        "style": {
+                            "css": ["container__btn-element"]
+                        }
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "params",
+                        "tag": "func-param-set-proj",
+                        "required": true,
+                        "listen": false,
+                        "placeholder": []
+                    },
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Returns:",
+                        "focusable": false
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "returns",
+                        "tag": "select-value",
+                        "required": true,
+                        "options": {
+                            "placeholder": "Select a value"
+                        }
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "returns",
+                        "tag": "dynamic-value"
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "function-param"
+            },
+            "tags": [
+                "func-param-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "dynamic",
+                                "type": "attribute",
+                                "name": "name",
+                                "tag": "string-proj",
+                                "required": true,
+                                "listen": false,
+                                "options": {
+                                    "placeholder": "Parameter name"
+                                }
+                            },
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "is a"
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "type",
+                                "tag": "select-type",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a type"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "type",
+                        "tag": "dynamic-type"
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": false
+            }
+        },
+        {
+            "concept": {
+                "name": "type"
+            },
+            "tags": [
+                "select-type"
+            ],
+            "type": "field",
+            "content": {
+                "type": "choice",
+                "choice": {
+                    "option": {
+                        "template": { "tag": "choice" },
+                        "style": {
+                            "css": ["select-choice__list-option"]
+                        }
+                    },
+                    "style": {
+                        "css": ["select-choice__list"]
+                    }
+                },
+                "expanded": false,
+                "input": false,
+                "style": {
+                    "css": ["select-choice"]
+                }
+            }
+        },
+        {
+            "concept":{ "name": "string-type" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "String",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "bool-type" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Bool",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "number-type" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Number",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "set-type" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "Set",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept":{ "name": "user-concept-type" },
+            "tags": [ "choice" ],
+            "type": "layout",
+            "content": {
+                "type": "wrap",
+                "focusable": false,
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "content": "User Concept",
+                        "focusable": false
+                    }
+                ]
+            }
+        },
+        {
+            "concept": { "name": "type" },
+            "tags": ["dynamic-type"],
+            "type": "layout",
+            "content": {
+                "type": "flex",
+                "orientation": "horizontal",
+                "disposition": [
+                    {
+                        "type": "projection",
+                        "bind": "value",
+                        "placeholder": false,
+                        "tag": "type-proj"
+                    }
+                ]
+            }
+        },
+        {
+            "concept": { "name": "string-type" },
+            "tags": ["type-proj"],
+            "type": "layout",
+            "content": {
+                "type": "flex",
+                "orientation": "horizontal",
+                "disposition": []
+            }
+        },
+        {
+            "concept": { "name": "bool-type" },
+            "tags": ["type-proj"],
+            "type": "layout",
+            "content": {
+                "type": "flex",
+                "orientation": "horizontal",
+                "disposition": []
+            }
+        },
+        {
+            "concept": { "name": "number-type" },
+            "tags": ["type-proj"],
+            "type": "layout",
+            "content": {
+                "type": "flex",
+                "orientation": "horizontal",
+                "disposition": []
+            }
+        },
+        {
+            "concept": { "name": "set-type" },
+            "tags": ["type-proj"],
+            "type": "layout",
+            "content": {
+                "type": "flex",
+                "orientation": "horizontal",
+                "disposition": [
+                    {
+                        "kind": "static",
+                        "type": "text",
+                        "focusable": true,
+                        "hidden": false,
+                        "asHTML": true,
+                        "content": "Set of: "
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "type",
+                        "tag": "select-type",
+                        "required": true,
+                        "options": {
+                            "placeholder": "Select a type"
+                        }
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "type",
+                        "tag": "dynamic-type"
+                    }
+                ]
+            }
+        },
+        {
+            "concept": { "name": "user-concept-type" },
+            "tags": ["type-proj"],
+            "type": "layout",
+            "content": {
+                "type": "flex",
+                "orientation": "horizontal",
+                "disposition": [
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "concept-name",
+                        "tag": "string-proj",
+                        "required": true,
+                        "listen": false,
+                        "options": {
+                            "placeholder": "Concept name"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "concept": {
+                "name": "set"
+            },
+            "tags": [
+                "value-set-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "field",
+                        "type": "list",
+                        "focusable": true,
+                        "readonly": false,
+                        "disabled": false,
+                        "hidden": false,
+                        "source": null,
+                        "list": {
+                            "item": {
+                                "template": {
+                                    "tag": "value-proj"
+                                }
+                            },
+                            "style": {
+                                "css": ["template-value-list"]
+                            }
+                        },
+                        "action": {
+                            "add": false,
+                            "remove": {
+                                "content": [
+                                    {
+                                        "type": "static",
+                                        "static": {
+                                            "type": "text",
+                                            "content": "qqqqq",
+                                            "focusable": false
+                                        }
+                                    }
+                                ],
+                                "help": "Remove element",
+                                "style": {
+                                    "css": ["textual-list__btn-remove"]
+                                }
+                            }
+                        }
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "set"
+            },
+            "tags": [
+                "cond-branch-set-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "field",
+                        "type": "list",
+                        "focusable": true,
+                        "readonly": false,
+                        "disabled": false,
+                        "hidden": false,
+                        "source": null,
+                        "list": {
+                            "item": {
+                                "template": {
+                                    "tag": "branch-proj"
+                                }
+                            },
+                            "style": {
+                                "css": ["template-value-list"]
+                            }
+                        },
+                        "action": {
+                            "add": false
+                        }
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "set"
+            },
+            "tags": [
+                "let-def-set-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "field",
+                        "type": "list",
+                        "focusable": true,
+                        "readonly": false,
+                        "disabled": false,
+                        "hidden": false,
+                        "source": null,
+                        "list": {
+                            "item": {
+                                "template": {
+                                    "tag": "let-def-proj"
+                                }
+                            },
+                            "style": {
+                                "css": ["template-value-list"]
+                            }
+                        },
+                        "action": {
+                            "add": false
+                        }
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "set"
+            },
+            "tags": [
+                "func-param-set-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "field",
+                        "type": "list",
+                        "focusable": true,
+                        "readonly": false,
+                        "disabled": false,
+                        "hidden": false,
+                        "source": null,
+                        "list": {
+                            "item": {
+                                "template": {
+                                    "tag": "func-param-proj"
+                                }
+                            },
+                            "style": {
+                                "css": ["template-value-list"]
+                            }
+                        },
+                        "action": {
+                            "add": false
+                        }
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "string"
+            },
+            "tags": [
+                "string-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "field",
+                        "type": "text",
+                        "focusable": true,
+                        "readonly": false,
+                        "disabled": false,
+                        "hidden": false,
+                        "source": null,
+                        "multiline": false,
+                        "resizable": false,
+                        "input": {
+                            "type": "text",
+                            "placeholder": ""
+                        }
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "row",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true,
+                "style": {
+                    "text": {},
+                    "box": {
+                        "background": {
+                            "color": null
+                        },
+                        "border": {},
+                        "corner": null,
+                        "opacity": 100
+                    }
+                }
+            }
+        },
+        {
+            "concept": {
+                "name": "number"
+            },
+            "tags": [
+                "number-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "field",
+                        "type": "text",
+                        "focusable": true,
+                        "readonly": false,
+                        "disabled": false,
+                        "hidden": false,
+                        "source": null,
+                        "multiline": false,
+                        "resizable": false,
+                        "input": {
+                            "type": "text",
+                            "placeholder": ""
+                        }
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "row",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "boolean"
+            },
+            "tags": [
+                "bool-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "field",
+                        "type": "binary",
+                        "focusable": true,
+                        "readonly": false,
+                        "disabled": false,
+                        "hidden": false,
+                        "source": null,
+                        "state": {},
+                        "checkbox": {
+                            "position": "before",
+                            "label": {
+                                "content": "True"
+                            }
+                        }
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "row",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
+        }
+    ],
+    "template": [
+        {
+            "type": "template",
+            "name": "creation-button-list",
+            "param": [
+                { "name": "target-attribute", "type": "string" }
+            ],
+            "content": [
+                {
+                    "kind": "container",
+                    "type": "container",
+                    "content": [
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "text" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+TXT"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "for-each" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+FOREACH"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "condition" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+COND"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "let" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+LET"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "output-sequence" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+CONCAT"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "call" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+CALL"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "member-access" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+MEMBER"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "concept-set" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+CONCEPTS"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "var" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+VAR"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "number-literal" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+NUM"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "bool-literal" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+BOOL"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": { "type": "param", "name": "target-attribute" }
+                                },
+                                "value": { "name": "set-literal" }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+SET"
+                                }
+                            ],
+                            "style": {
+                                "css": ["container__btn-element"]
+                            }
+                        }
+                    ],
+                    "layout": {
+                        "type": "flex",
+                        "orientation": "row",
+                        "wrappable": true,
+                        "alignItems": "start",
+                        "justifyContent": "start"
+                    },
+                    "focusable": true
+                }
+            ]
+        }
+    ],
+    "style": []
+}

@@ -416,12 +416,11 @@ export const ProjectionModel = {
      * @param {string} tag 
      */
     getProjectionSchema(concept, tag) {
-
         if (isNullOrUndefined(concept)) {
             throw new TypeError("Bad parameter: concept");
         }
 
-        var projection = null;
+        let projection = [];
 
         const hasName = (name) => name && (name === concept.name || concept.schema && name === concept.schema.base); // TODO: change to look for base (include self)
         // const hasPrototype = (prototype) => !!(prototype && concept.hasPrototype(prototype));
@@ -430,7 +429,7 @@ export const ProjectionModel = {
                 return false;
             }
 
-            return concept.hasPrototype(prototype);
+            return concept.hasPrototype && concept.hasPrototype(prototype);
         };
 
         if (isString(concept)) {
@@ -509,33 +508,7 @@ export const ProjectionModel = {
      * @returns {boolean}
      */
     hasProjectionSchema(concept, tag) {
-        if (isNullOrUndefined(concept)) {
-            throw new TypeError("Bad parameter: concept");
-        }
-
-        let projection = [];
-
-        const hasName = (name) => name && (name === concept.name || concept.schema && name === concept.schema.base); // TODO: change to look for base (include self)
-        // const hasPrototype = (prototype) => !!(prototype && concept.hasPrototype(prototype));
-        const hasPrototype = (prototype) => {
-            if (isNullOrUndefined(prototype) || concept.nature === "prototype") {
-                return false;
-            }
-
-            return concept.hasPrototype && concept.hasPrototype(prototype);
-        };
-
-        if (isString(concept)) {
-            projection = this.schema.projection.filter(p => p.concept.name === concept);
-        } else {
-            projection = this.schema.projection.filter(p => hasName(p.concept.name) || hasPrototype(p.concept.prototype));
-        }
-
-        if (isIterable(tag) && !isEmpty(tag)) {
-            return projection.some(p => p.tags && p.tags.includes(tag));
-        }
-
-        return !isEmpty(projection);
+        return !isEmpty(this.getProjectionSchema(concept, tag));
     },
 
     export() {

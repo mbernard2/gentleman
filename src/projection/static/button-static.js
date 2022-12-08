@@ -172,11 +172,20 @@ const BaseButtonStatic = {
         if (this.schema.action) {
             const { type, value, target } = this.schema.action;
 
+            // Resolve template params (if any) for `value` and for `target`
             if (isObject(value)) {
                 for (const key in value) {
                     const element = value[key];
                     if (element.type === "param") {
                         value[key] = resolveParam.call(this, this.schema.template, element.name);
+                    }
+                }
+            }
+            if (isObject(target)) {
+                for (const key in target) {
+                    const element = target[key];
+                    if (element.type === "param") {
+                        target[key] = resolveParam.call(this, this.schema.template, element.name);
                     }
                 }
             }
@@ -193,7 +202,7 @@ const BaseButtonStatic = {
                 case "CREATE-CONCRETE":
                     if (target.type === "attribute") {
                         let attr = concept.getAttribute(target.name);
-                        attr.target.createConcreteElement(value.name);
+                        attr.target.createConcreteElement({ value: value });
                     }
                 case "SELECT":
                     if (isNullOrUndefined(target)) {

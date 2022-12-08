@@ -534,10 +534,12 @@ const primitives = [
 ];
 
 function getSchema(schema, name) {
-    let result = schema.find(concept => concept.name === name);
+    let result = schema.find(concept =>
+        name && concept.name.toLowerCase() === name.toLowerCase());
 
     if (isNullOrUndefined(result)) {
-        result = primitives.find(concept => concept.name === name);
+        result = primitives.find(concept =>
+            name && concept.name.toLowerCase() === name.toLowerCase());
     }
 
     return result;
