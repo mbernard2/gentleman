@@ -4,8 +4,8 @@ import { buildConceptHandler, buildProjectionHandler, buildGraphicalHandler } fr
 import { ProjectionEditor, ConceptEditor } from "./projection-editor.js";
 
 
-let CMODEL__CONCEPT = null;
-let CMODEL__PROJECTION = null;
+// let CMODEL__CONCEPT = null;
+// let CMODEL__PROJECTION = null;
 /*let PMODEL__CONCEPT = null;
 let PMODEL__PROJECTION = null;*/
 /*let SMODEL__CONCEPT = null;
@@ -17,8 +17,8 @@ const CMODEL__EDITOR = require('@models/concept-model/config.json');
 const PMODEL__EDITOR = require('@models/projection-model/config.json');
 const GMODEL__EDITOR = require('./../../models/graphical-model/config.json');
 
-// const CMODEL__CONCEPT = require('@models/concept-model/concept.json');
-// const CMODEL__PROJECTION = require('@models/concept-model/projection.json');
+const CMODEL__CONCEPT = require('@models/concept-model/concept.json');
+const CMODEL__PROJECTION = require('@models/concept-model/projection.json');
 
 const SMODEL__CONCEPT = require('@models/style-model/concept.json');
 const SMODEL__PROJECTION = require('@models/style-model/projection.json');
@@ -678,12 +678,19 @@ function createConceptEditor() {
             return editor;
         });
     } else {
-        return new Promise(() => this.createEditor({
-            conceptModel: CMODEL__CONCEPT,
-            projectionModel: CMODEL__PROJECTION,
-            config: CMODEL__EDITOR,
-            handlers: CONCEPT_HANDLERS
-        }));
+        return new Promise((resolve) => {
+            let editor = this.createEditor({
+                conceptModel: CMODEL__CONCEPT,
+                projectionModel: CMODEL__PROJECTION,
+                config: CMODEL__EDITOR,
+                handlers: CONCEPT_HANDLERS
+            });
+
+            let wrapper = Object.create(ConceptEditor).init(editor);
+            this.editorSection.append(wrapper.render());
+
+            resolve(editor);
+        });
     }
 }
 
@@ -722,7 +729,7 @@ function createProjectionEditor() {
             return editor;
         });
     } else {
-        return new Promise(() => {
+        return new Promise((resolve) => {
             let editor = this.createEditor({
                 conceptModel: PMODEL__CONCEPT,
                 projectionModel: PMODEL__PROJECTION,
@@ -736,7 +743,7 @@ function createProjectionEditor() {
             let wrapper = Object.create(ProjectionEditor).init(editor);
             this.editorSection.append(wrapper.render());
 
-            return editor;
+            resolve(editor);
         });
     }
 
@@ -780,7 +787,7 @@ function createGraphicEditor() {
             return editor;
         });
     } else {
-        return new Promise(() => {
+        return new Promise((resolve) => {
             let editor = this.createEditor({
                 conceptModel: GMODEL__CONCEPT,
                 projectionModel: GMODEL__PROJECTION,
@@ -791,7 +798,7 @@ function createGraphicEditor() {
             let wrapper = Object.create(ProjectionEditor).init(editor);
             this.editorSection.append(wrapper.render());
 
-            return editor;
+            resolve(editor);
         });
     }
 
