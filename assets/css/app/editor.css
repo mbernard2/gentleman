@@ -299,7 +299,6 @@
     }
         .model-concept-section[data-view="grid"] .editor-concept > .layout-container { 
             flex-grow: 2; 
-            overflow: auto; 
         }
 
     .model-concept-section[data-view="tab"] .editor-concept,

@@ -379,7 +379,7 @@
         background-color: #fff;
     }
 
-    .select-choice:not(.active):not(.empty) .field--choice__select-wrapper {
+    .select-choice .field--choice__select-wrapper {
         padding: 2px 6px;
         border: 0 none;
         font-weight: 500;

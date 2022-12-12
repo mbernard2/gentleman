@@ -20,7 +20,12 @@
                                 "focusable": true,
                                 "hidden": false,
                                 "asHTML": true,
-                                "content": "Name:"
+                                "content": "FILE NAME",
+                                "style": {
+                                    "css": [
+                                        "template-label"
+                                    ]
+                                }
                             },
                             {
                                 "type": "attribute",
@@ -36,7 +41,7 @@
                             "type": "flex",
                             "orientation": "row",
                             "wrappable": true,
-                            "alignItems": "start",
+                            "alignItems": "center",
                             "justifyContent": "start"
                         },
                         "focusable": true
@@ -44,24 +49,57 @@
                     {
                         "type": "attribute",
                         "name": "name",
-                        "tag": "dynamic-value"
+                        "tag": "dynamic-value",
+                        "style": {
+                            "css": [
+                                "template-indentation"
+                            ]
+                        }
                     },
                     {
-                        "kind": "static",
-                        "type": "text",
-                        "focusable": true,
-                        "hidden": false,
-                        "asHTML": true,
-                        "content": "Contents:"
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": true,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "CONTENTS",
+                                "style": {
+                                    "css": [
+                                        "template-label"
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "contents",
+                                "tag": "select-value",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a value"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "center",
+                            "justifyContent": "start"
+                        },
+                        "style": {
+                            "css": [
+                                "template-top-spacing"
+                            ]
+                        },
+                        "focusable": true
                     },
                     {
-                        "kind": "dynamic",
                         "type": "attribute",
                         "name": "contents",
-                        "tag": "value-proj",
-                        "required": true,
-                        "listen": false,
-                        "placeholder": []
+                        "tag": "dynamic-value"
                     }
                 ],
                 "layout": {
@@ -70,6 +108,11 @@
                     "wrappable": true,
                     "alignItems": "start",
                     "justifyContent": "start"
+                },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": true
             }
@@ -85,21 +128,45 @@
                 "type": "container",
                 "content": [
                     {
-                        "kind": "static",
-                        "type": "text",
-                        "focusable": false,
-                        "hidden": false,
-                        "asHTML": true,
-                        "content": "TXT",
-                        "style": {
-                            "css": ["template-label"]
-                        }
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "TXT",
+                                "style": {
+                                    "css": [
+                                        "template-label"
+                                    ]
+                                }
+                            },
+                            {
+                                "kind": "dynamic",
+                                "type": "attribute",
+                                "name": "substitute-placeholders",
+                                "tag": "text-placeholder-box-proj",
+                                "required": true,
+                                "listen": false,
+                                "placeholder": []
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "center",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
                     },
                     {
                         "kind": "dynamic",
                         "type": "attribute",
                         "name": "contents",
-                        "tag": "string-proj",
+                        "tag": "multiline-string-proj",
                         "required": true,
                         "listen": false,
                         "placeholder": []
@@ -107,10 +174,15 @@
                 ],
                 "layout": {
                     "type": "flex",
-                    "orientation": "row",
+                    "orientation": "column",
                     "wrappable": true,
                     "alignItems": "start",
-                    "justifyContent": "start"
+                    "justifyContent": "center"
+                },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": true
             }
@@ -136,7 +208,9 @@
                                 "asHTML": true,
                                 "content": "FOREACH",
                                 "style": {
-                                    "css": ["template-label"]
+                                    "css": [
+                                        "template-label"
+                                    ]
                                 }
                             },
                             {
@@ -146,28 +220,22 @@
                                 "tag": "string-proj",
                                 "required": true,
                                 "listen": false,
-                                "placeholder": []
-                            }
-                        ],
-                        "layout": {
-                            "type": "flex",
-                            "orientation": "row",
-                            "wrappable": true,
-                            "alignItems": "start",
-                            "justifyContent": "start"
-                        },
-                        "focusable": false
-                    },
-                    {
-                        "type": "container",
-                        "content": [
+                                "options": {
+                                    "placeholder": "Variable name"
+                                }
+                            },
                             {
                                 "kind": "static",
                                 "type": "text",
                                 "focusable": false,
                                 "hidden": false,
                                 "asHTML": true,
-                                "content": "in"
+                                "content": "IN",
+                                "style": {
+                                    "css": [
+                                        "template-label-with-left-spacing"
+                                    ]
+                                }
                             },
                             {
                                 "type": "attribute",
@@ -183,7 +251,7 @@
                             "type": "flex",
                             "orientation": "row",
                             "wrappable": true,
-                            "alignItems": "start",
+                            "alignItems": "center",
                             "justifyContent": "start"
                         },
                         "focusable": false
@@ -191,16 +259,50 @@
                     {
                         "type": "attribute",
                         "name": "in",
-                        "tag": "dynamic-value"
+                        "tag": "dynamic-value",
+                        "style": {
+                            "css": [
+                                "template-indentation"
+                            ]
+                        }
                     },
                     {
-                        "kind": "dynamic",
-                        "type": "attribute",
-                        "name": "outputs",
-                        "tag": "value-proj",
-                        "required": true,
-                        "listen": false,
-                        "placeholder": []
+                        "type": "container",
+                        "content": [
+                            {
+                                "type": "attribute",
+                                "name": "map-to",
+                                "tag": "select-value",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a value"
+                                },
+                                "style": {
+                                    "css": [
+                                        "template-top-spacing"
+                                    ]
+                                }
+                            },
+                            {
+                                "kind": "dynamic",
+                                "type": "attribute",
+                                "name": "map-to",
+                                "tag": "dynamic-value"
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "column",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "style": {
+                            "css": [
+                                "template-separation"
+                            ]
+                        },
+                        "focusable": false
                     }
                 ],
                 "layout": {
@@ -209,6 +311,11 @@
                     "wrappable": true,
                     "alignItems": "start",
                     "justifyContent": "start"
+                },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": true
             }
@@ -225,42 +332,28 @@
                         "type": "container",
                         "content": [
                             {
-                                "kind": "static",
-                                "type": "text",
-                                "focusable": false,
-                                "hidden": false,
-                                "asHTML": true,
-                                "content": "Variable name:"
-                            },
-                            {
                                 "kind": "dynamic",
                                 "type": "attribute",
                                 "name": "varname",
                                 "tag": "string-proj",
                                 "required": true,
                                 "listen": false,
-                                "placeholder": []
-                            }
-                        ],
-                        "layout": {
-                            "type": "flex",
-                            "orientation": "row",
-                            "wrappable": true,
-                            "alignItems": "start",
-                            "justifyContent": "start"
-                        },
-                        "focusable": false
-                    },
-                    {
-                        "type": "container",
-                        "content": [
+                                "options": {
+                                    "placeholder": "Variable name"
+                                }
+                            },
                             {
                                 "kind": "static",
                                 "type": "text",
                                 "focusable": false,
                                 "hidden": false,
                                 "asHTML": true,
-                                "content": "in"
+                                "content": "IN",
+                                "style": {
+                                    "css": [
+                                        "template-label-with-left-spacing"
+                                    ]
+                                }
                             },
                             {
                                 "type": "attribute",
@@ -276,7 +369,7 @@
                             "type": "flex",
                             "orientation": "row",
                             "wrappable": true,
-                            "alignItems": "start",
+                            "alignItems": "center",
                             "justifyContent": "start"
                         },
                         "focusable": false
@@ -284,24 +377,39 @@
                     {
                         "type": "attribute",
                         "name": "in",
-                        "tag": "dynamic-value"
+                        "tag": "dynamic-value",
+                        "style": {
+                            "css": [
+                                "template-indentation"
+                            ]
+                        }
                     },
                     {
-                        "kind": "static",
-                        "type": "text",
-                        "focusable": false,
-                        "hidden": false,
-                        "asHTML": true,
-                        "content": "File:"
-                    },
-                    {
-                        "kind": "dynamic",
-                        "type": "attribute",
-                        "name": "file",
-                        "tag": "file-proj",
-                        "required": true,
-                        "listen": false,
-                        "placeholder": []
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "dynamic",
+                                "type": "attribute",
+                                "name": "file",
+                                "tag": "file-proj",
+                                "required": true,
+                                "listen": false,
+                                "placeholder": []
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "style": {
+                            "css": [
+                                "template-separation"
+                            ]
+                        },
+                        "focusable": false
                     }
                 ],
                 "layout": {
@@ -310,6 +418,11 @@
                     "wrappable": true,
                     "alignItems": "start",
                     "justifyContent": "start"
+                },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": true
             }
@@ -325,41 +438,63 @@
                 "type": "container",
                 "content": [
                     {
-                        "kind": "static",
-                        "type": "text",
-                        "focusable": false,
-                        "hidden": false,
-                        "asHTML": true,
-                        "content": "COND",
-                        "style": {
-                            "css": ["template-label"]
-                        }
-                    },
-                    {
-                        "kind": "static",
-                        "type": "button",
-                        "focusable": true,
-                        "hidden": false,
-                        "trigger": false,
-                        "disabled": false,
-                        "action": {
-                            "type": "CREATE-CONCRETE",
-                            "target": { "type": "attribute", "name": "branches" },
-                            "value": { "name": "condition-branch" }
-                        },
+                        "type": "container",
                         "content": [
                             {
                                 "kind": "static",
                                 "type": "text",
-                                "focusable": true,
+                                "focusable": false,
                                 "hidden": false,
                                 "asHTML": true,
-                                "content": "+BRANCH"
+                                "content": "COND",
+                                "style": {
+                                    "css": [
+                                        "template-label"
+                                    ]
+                                }
+                            },
+                            {
+                                "kind": "static",
+                                "type": "button",
+                                "focusable": true,
+                                "hidden": false,
+                                "trigger": false,
+                                "disabled": false,
+                                "action": {
+                                    "type": "CREATE-CONCRETE",
+                                    "target": {
+                                        "type": "attribute",
+                                        "name": "branches"
+                                    },
+                                    "value": {
+                                        "name": "condition-branch"
+                                    }
+                                },
+                                "content": [
+                                    {
+                                        "kind": "static",
+                                        "type": "text",
+                                        "focusable": true,
+                                        "hidden": false,
+                                        "asHTML": true,
+                                        "content": "+BRANCH"
+                                    }
+                                ],
+                                "style": {
+                                    "css": [
+                                        "container__btn-element"
+                                    ]
+                                }
                             }
                         ],
-                        "style": {
-                            "css": ["container__btn-element"]
-                        }
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "center",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
                     },
                     {
                         "kind": "dynamic",
@@ -369,6 +504,57 @@
                         "required": true,
                         "listen": false,
                         "placeholder": []
+                    },
+                    {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "ELSE",
+                                "style": {
+                                    "css": [
+                                        "template-label"
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "else",
+                                "tag": "select-value",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a value"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "center",
+                            "justifyContent": "start"
+                        },
+                        "style": {
+                            "css": [
+                                "template-top-spacing"
+                            ]
+                        },
+                        "focusable": false
+                    },
+                    {
+                        "kind": "dynamic",
+                        "type": "attribute",
+                        "name": "else",
+                        "tag": "dynamic-value",
+                        "style": {
+                            "css": [
+                                "template-indentation"
+                            ]
+                        }
                     }
                 ],
                 "layout": {
@@ -377,6 +563,11 @@
                     "wrappable": true,
                     "alignItems": "start",
                     "justifyContent": "start"
+                },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": true
             }
@@ -392,43 +583,96 @@
                 "type": "container",
                 "content": [
                     {
-                        "kind": "static",
-                        "type": "text",
-                        "focusable": false,
-                        "hidden": false,
-                        "asHTML": true,
-                        "content": "IF"
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "IF",
+                                "style": {
+                                    "css": [
+                                        "template-label"
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "if",
+                                "tag": "select-value",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a value"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "center",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
                     },
                     {
                         "type": "attribute",
                         "name": "if",
-                        "tag": "select-value",
-                        "required": true,
-                        "options": {
-                            "placeholder": "Select a value"
+                        "tag": "dynamic-value",
+                        "style": {
+                            "css": [
+                                "template-indentation"
+                            ]
                         }
                     },
                     {
-                        "type": "attribute",
-                        "name": "if",
-                        "tag": "dynamic-value"
-                    },
-                    {
-                        "kind": "static",
-                        "type": "text",
-                        "focusable": false,
-                        "hidden": false,
-                        "asHTML": true,
-                        "content": "THEN"
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "THEN",
+                                "style": {
+                                    "css": [
+                                        "template-label",
+                                        "template-top-spacing"
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "then",
+                                "tag": "select-value",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a value"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "center",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
                     },
                     {
                         "kind": "dynamic",
                         "type": "attribute",
                         "name": "then",
-                        "tag": "value-proj",
-                        "required": true,
-                        "listen": false,
-                        "placeholder": []
+                        "tag": "dynamic-value",
+                        "style": {
+                            "css": [
+                                "template-indentation"
+                            ]
+                        }
                     }
                 ],
                 "layout": {
@@ -437,6 +681,11 @@
                     "wrappable": true,
                     "alignItems": "start",
                     "justifyContent": "start"
+                },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": false
             }
@@ -462,7 +711,9 @@
                                 "asHTML": true,
                                 "content": "LET",
                                 "style": {
-                                    "css": ["template-label"]
+                                    "css": [
+                                        "template-label"
+                                    ]
                                 }
                             },
                             {
@@ -474,8 +725,13 @@
                                 "disabled": false,
                                 "action": {
                                     "type": "CREATE-CONCRETE",
-                                    "target": { "type": "attribute", "name": "defs" },
-                                    "value": { "name": "let-def" }
+                                    "target": {
+                                        "type": "attribute",
+                                        "name": "defs"
+                                    },
+                                    "value": {
+                                        "name": "variable-def"
+                                    }
                                 },
                                 "content": [
                                     {
@@ -488,7 +744,9 @@
                                     }
                                 ],
                                 "style": {
-                                    "css": ["container__btn-element"]
+                                    "css": [
+                                        "container__btn-element"
+                                    ]
                                 }
                             }
                         ],
@@ -496,7 +754,7 @@
                             "type": "flex",
                             "orientation": "row",
                             "wrappable": true,
-                            "alignItems": "start",
+                            "alignItems": "center",
                             "justifyContent": "start"
                         },
                         "focusable": false
@@ -505,19 +763,61 @@
                         "kind": "dynamic",
                         "type": "attribute",
                         "name": "defs",
-                        "tag": "let-def-set-proj",
+                        "tag": "variable-def-set-proj",
                         "required": true,
                         "listen": false,
                         "placeholder": []
                     },
                     {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "IN",
+                                "style": {
+                                    "css": [
+                                        "template-label"
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "in",
+                                "tag": "select-value",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a value"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "center",
+                            "justifyContent": "start"
+                        },
+                        "style": {
+                            "css": [
+                                "template-top-spacing"
+                            ]
+                        },
+                        "focusable": false
+                    },
+                    {
                         "kind": "dynamic",
                         "type": "attribute",
                         "name": "in",
-                        "tag": "value-proj",
-                        "required": true,
-                        "listen": false,
-                        "placeholder": []
+                        "tag": "dynamic-value",
+                        "style": {
+                            "css": [
+                                "template-indentation"
+                            ]
+                        }
                     }
                 ],
                 "layout": {
@@ -527,15 +827,20 @@
                     "alignItems": "start",
                     "justifyContent": "start"
                 },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
+                },
                 "focusable": true
             }
         },
         {
             "concept": {
-                "name": "let-def"
+                "name": "variable-def"
             },
             "tags": [
-                "let-def-proj"
+                "variable-def-proj"
             ],
             "container": {
                 "type": "container",
@@ -550,7 +855,9 @@
                                 "tag": "string-proj",
                                 "required": true,
                                 "listen": false,
-                                "placeholder": []
+                                "options": {
+                                    "placeholder": "Variable name"
+                                }
                             },
                             {
                                 "kind": "static",
@@ -558,7 +865,12 @@
                                 "focusable": false,
                                 "hidden": false,
                                 "asHTML": true,
-                                "content": "="
+                                "content": "=",
+                                "style": {
+                                    "css": [
+                                        "template-label-with-left-spacing"
+                                    ]
+                                }
                             },
                             {
                                 "type": "attribute",
@@ -574,7 +886,7 @@
                             "type": "flex",
                             "orientation": "row",
                             "wrappable": true,
-                            "alignItems": "start",
+                            "alignItems": "center",
                             "justifyContent": "start"
                         },
                         "focusable": false
@@ -592,12 +904,17 @@
                     "alignItems": "start",
                     "justifyContent": "start"
                 },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
+                },
                 "focusable": false
             }
         },
         {
             "concept": {
-                "name": "output-sequence"
+                "name": "sequence"
             },
             "tags": [
                 "value-proj"
@@ -609,7 +926,10 @@
                         "type": "template",
                         "name": "creation-button-list",
                         "param": [
-                            { "name": "target-attribute", "value": "items" }
+                            {
+                                "name": "target-attribute",
+                                "value": "items"
+                            }
                         ]
                     },
                     {
@@ -625,14 +945,16 @@
                 "layout": {
                     "type": "flex",
                     "orientation": "column",
-                    "wrappable": true,
+                    "wrappable": false,
                     "alignItems": "start",
                     "justifyContent": "start"
                 },
-                "focusable": true,
                 "style": {
-                    "css": ["template-output-sequence"]
-                }
+                    "css": [
+                        "template-item-proj"
+                    ]
+                },
+                "focusable": true
             }
         },
         {
@@ -646,39 +968,70 @@
                 "type": "container",
                 "content": [
                     {
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": false,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "CALL",
+                                "style": {
+                                    "css": [
+                                        "template-label"
+                                    ]
+                                }
+                            },
+                            {
+                                "kind": "dynamic",
+                                "type": "attribute",
+                                "name": "fn-name",
+                                "tag": "string-proj",
+                                "required": true,
+                                "listen": false,
+                                "options": {
+                                    "placeholder": "Function name"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "center",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
+                    },
+                    {
                         "kind": "static",
                         "type": "text",
                         "focusable": false,
                         "hidden": false,
                         "asHTML": true,
-                        "content": "CALL",
+                        "content": "ARGS",
                         "style": {
-                            "css": ["template-label"]
+                            "css": [
+                                "template-label",
+                                "template-top-spacing"
+                            ]
                         }
-                    },
-                    {
-                        "kind": "dynamic",
-                        "type": "attribute",
-                        "name": "fn-name",
-                        "tag": "string-proj",
-                        "required": true,
-                        "listen": false,
-                        "placeholder": []
-                    },
-                    {
-                        "kind": "static",
-                        "type": "text",
-                        "focusable": false,
-                        "hidden": false,
-                        "asHTML": true,
-                        "content": "Arguments:"
                     },
                     {
                         "type": "template",
                         "name": "creation-button-list",
                         "param": [
-                            { "name": "target-attribute", "value": "args" }
-                        ]
+                            {
+                                "name": "target-attribute",
+                                "value": "args"
+                            }
+                        ],
+                        "style": {
+                            "css": [
+                                "template-top-spacing"
+                            ]
+                        }
                     },
                     {
                         "kind": "dynamic",
@@ -697,10 +1050,12 @@
                     "alignItems": "start",
                     "justifyContent": "start"
                 },
-                "focusable": true,
                 "style": {
-                    "css": ["template-output-sequence"]
-                }
+                    "css": [
+                        "template-item-proj"
+                    ]
+                },
+                "focusable": true
             }
         },
         {
@@ -724,7 +1079,9 @@
                                 "asHTML": true,
                                 "content": "MEMBER",
                                 "style": {
-                                    "css": ["template-label"]
+                                    "css": [
+                                        "template-label"
+                                    ]
                                 }
                             },
                             {
@@ -741,7 +1098,7 @@
                             "type": "flex",
                             "orientation": "row",
                             "wrappable": true,
-                            "alignItems": "start",
+                            "alignItems": "center",
                             "justifyContent": "start"
                         },
                         "focusable": false
@@ -749,7 +1106,12 @@
                     {
                         "type": "attribute",
                         "name": "object",
-                        "tag": "dynamic-value"
+                        "tag": "dynamic-value",
+                        "style": {
+                            "css": [
+                                "template-indentation"
+                            ]
+                        }
                     },
                     {
                         "type": "container",
@@ -760,21 +1122,34 @@
                                 "focusable": false,
                                 "hidden": false,
                                 "asHTML": true,
-                                "content": "Attribute:"
+                                "content": "GET",
+                                "style": {
+                                    "css": [
+                                        "template-label"
+                                    ]
+                                }
                             },
                             {
                                 "type": "attribute",
                                 "name": "attr-name",
                                 "tag": "string-proj",
-                                "required": true
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Attribute name"
+                                }
                             }
                         ],
                         "layout": {
                             "type": "flex",
                             "orientation": "row",
                             "wrappable": true,
-                            "alignItems": "start",
+                            "alignItems": "center",
                             "justifyContent": "start"
+                        },
+                        "style": {
+                            "css": [
+                                "template-top-spacing"
+                            ]
                         },
                         "focusable": false
                     }
@@ -785,6 +1160,11 @@
                     "wrappable": true,
                     "alignItems": "start",
                     "justifyContent": "start"
+                },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": true
             }
@@ -807,7 +1187,9 @@
                         "asHTML": true,
                         "content": "CONCEPTS",
                         "style": {
-                            "css": ["template-label"]
+                            "css": [
+                                "template-label"
+                            ]
                         }
                     },
                     {
@@ -817,15 +1199,22 @@
                         "tag": "string-proj",
                         "required": true,
                         "listen": false,
-                        "placeholder": []
+                        "options": {
+                            "placeholder": "Concept name"
+                        }
                     }
                 ],
                 "layout": {
                     "type": "flex",
                     "orientation": "row",
                     "wrappable": true,
-                    "alignItems": "start",
+                    "alignItems": "center",
                     "justifyContent": "start"
+                },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": true
             }
@@ -848,25 +1237,34 @@
                         "asHTML": true,
                         "content": "VAR",
                         "style": {
-                            "css": ["template-label"]
+                            "css": [
+                                "template-label"
+                            ]
                         }
                     },
                     {
                         "kind": "dynamic",
                         "type": "attribute",
-                        "name": "var-name",
+                        "name": "name",
                         "tag": "string-proj",
                         "required": true,
                         "listen": false,
-                        "placeholder": []
+                        "options": {
+                            "placeholder": "Variable name"
+                        }
                     }
                 ],
                 "layout": {
                     "type": "flex",
                     "orientation": "row",
                     "wrappable": true,
-                    "alignItems": "start",
+                    "alignItems": "center",
                     "justifyContent": "start"
+                },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": true
             }
@@ -889,7 +1287,9 @@
                         "asHTML": true,
                         "content": "NUM",
                         "style": {
-                            "css": ["template-label"]
+                            "css": [
+                                "template-label"
+                            ]
                         }
                     },
                     {
@@ -899,15 +1299,22 @@
                         "tag": "number-proj",
                         "required": true,
                         "listen": false,
-                        "placeholder": []
+                        "options": {
+                            "placeholder": ""
+                        }
                     }
                 ],
                 "layout": {
                     "type": "flex",
                     "orientation": "row",
                     "wrappable": true,
-                    "alignItems": "start",
+                    "alignItems": "center",
                     "justifyContent": "start"
+                },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": true
             }
@@ -930,7 +1337,9 @@
                         "asHTML": true,
                         "content": "BOOL",
                         "style": {
-                            "css": ["template-label"]
+                            "css": [
+                                "template-label"
+                            ]
                         }
                     },
                     {
@@ -947,56 +1356,13 @@
                     "type": "flex",
                     "orientation": "row",
                     "wrappable": true,
-                    "alignItems": "start",
+                    "alignItems": "center",
                     "justifyContent": "start"
                 },
-                "focusable": true
-            }
-        },
-        {
-            "concept": {
-                "name": "set-literal"
-            },
-            "tags": [
-                "value-proj"
-            ],
-            "container": {
-                "type": "container",
-                "content": [
-                    {
-                        "kind": "static",
-                        "type": "text",
-                        "focusable": false,
-                        "hidden": false,
-                        "asHTML": true,
-                        "content": "SET",
-                        "style": {
-                            "css": ["template-label"]
-                        }
-                    },
-                    {
-                        "type": "template",
-                        "name": "creation-button-list",
-                        "param": [
-                            { "name": "target-attribute", "value": "items" }
-                        ]
-                    },
-                    {
-                        "kind": "dynamic",
-                        "type": "attribute",
-                        "name": "items",
-                        "tag": "value-set-proj",
-                        "required": true,
-                        "listen": false,
-                        "placeholder": []
-                    }
-                ],
-                "layout": {
-                    "type": "flex",
-                    "orientation": "column",
-                    "wrappable": true,
-                    "alignItems": "start",
-                    "justifyContent": "start"
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": true
             }
@@ -1013,25 +1379,37 @@
                 "type": "choice",
                 "choice": {
                     "option": {
-                        "template": { "tag": "choice" },
+                        "template": {
+                            "tag": "choice"
+                        },
                         "style": {
-                            "css": ["select-choice__list-option"]
+                            "css": [
+                                "select-choice__list-option"
+                            ]
                         }
                     },
                     "style": {
-                        "css": ["select-choice__list"]
+                        "css": [
+                            "select-choice__list"
+                        ]
                     }
                 },
                 "expanded": false,
                 "input": false,
                 "style": {
-                    "css": ["select-choice"]
+                    "css": [
+                        "select-choice"
+                    ]
                 }
             }
         },
         {
-            "concept":{ "name": "text" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "text"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1047,8 +1425,12 @@
             }
         },
         {
-            "concept":{ "name": "for-each" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "for-each"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1064,8 +1446,12 @@
             }
         },
         {
-            "concept":{ "name": "condition" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "condition"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1081,8 +1467,12 @@
             }
         },
         {
-            "concept":{ "name": "let" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "let"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1098,8 +1488,12 @@
             }
         },
         {
-            "concept":{ "name": "output-sequence" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "sequence"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1108,15 +1502,19 @@
                     {
                         "kind": "static",
                         "type": "text",
-                        "content": "Output Sequence",
+                        "content": "Sequence",
                         "focusable": false
                     }
                 ]
             }
         },
         {
-            "concept":{ "name": "call" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "call"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1132,8 +1530,12 @@
             }
         },
         {
-            "concept":{ "name": "member-access" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "member-access"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1149,8 +1551,12 @@
             }
         },
         {
-            "concept":{ "name": "concept-set" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "concept-set"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1166,8 +1572,12 @@
             }
         },
         {
-            "concept":{ "name": "var" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "var"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1183,8 +1593,12 @@
             }
         },
         {
-            "concept":{ "name": "number-literal" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "number-literal"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1200,8 +1614,12 @@
             }
         },
         {
-            "concept":{ "name": "bool-literal" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "bool-literal"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1217,25 +1635,12 @@
             }
         },
         {
-            "concept":{ "name": "set-literal" },
-            "tags": [ "choice" ],
-            "type": "layout",
-            "content": {
-                "type": "wrap",
-                "focusable": false,
-                "disposition": [
-                    {
-                        "kind": "static",
-                        "type": "text",
-                        "content": "Set Literal",
-                        "focusable": false
-                    }
-                ]
-            }
-        },
-        {
-            "concept": { "name": "value" },
-            "tags": ["dynamic-value"],
+            "concept": {
+                "name": "value"
+            },
+            "tags": [
+                "dynamic-value"
+            ],
             "type": "layout",
             "content": {
                 "type": "flex",
@@ -1259,48 +1664,72 @@
                 "type": "container",
                 "content": [
                     {
-                        "kind": "dynamic",
-                        "type": "attribute",
-                        "name": "name",
-                        "tag": "string-proj",
-                        "required": true,
-                        "listen": false,
-                        "placeholder": []
-                    },
-                    {
-                        "kind": "static",
-                        "type": "text",
-                        "content": "Params:",
-                        "focusable": false
-                    },
-                    {
-                        "kind": "static",
-                        "type": "button",
-                        "focusable": true,
-                        "hidden": false,
-                        "trigger": false,
-                        "disabled": false,
-                        "action": {
-                            "type": "CREATE-CONCRETE",
-                            "target": {
-                                "type": "attribute",
-                                "name": "params"
-                            },
-                            "value": { "name": "function-param" }
-                        },
+                        "type": "container",
                         "content": [
+                            {
+                                "kind": "dynamic",
+                                "type": "attribute",
+                                "name": "name",
+                                "tag": "string-proj",
+                                "required": true,
+                                "listen": false,
+                                "options": {
+                                    "placeholder": "Function name"
+                                }
+                            },
                             {
                                 "kind": "static",
                                 "type": "text",
+                                "content": "",
+                                "focusable": false,
+                                "style": {
+                                    "css": [
+                                        "template-label"
+                                    ]
+                                }
+                            },
+                            {
+                                "kind": "static",
+                                "type": "button",
                                 "focusable": true,
                                 "hidden": false,
-                                "asHTML": true,
-                                "content": "+PARAM"
+                                "trigger": false,
+                                "disabled": false,
+                                "action": {
+                                    "type": "CREATE-CONCRETE",
+                                    "target": {
+                                        "type": "attribute",
+                                        "name": "params"
+                                    },
+                                    "value": {
+                                        "name": "function-param"
+                                    }
+                                },
+                                "content": [
+                                    {
+                                        "kind": "static",
+                                        "type": "text",
+                                        "focusable": true,
+                                        "hidden": false,
+                                        "asHTML": true,
+                                        "content": "+PARAM"
+                                    }
+                                ],
+                                "style": {
+                                    "css": [
+                                        "container__btn-element"
+                                    ]
+                                }
                             }
                         ],
-                        "style": {
-                            "css": ["container__btn-element"]
-                        }
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": true,
+                            "alignItems": "center",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
                     },
                     {
                         "kind": "dynamic",
@@ -1309,27 +1738,72 @@
                         "tag": "func-param-set-proj",
                         "required": true,
                         "listen": false,
-                        "placeholder": []
-                    },
-                    {
-                        "kind": "static",
-                        "type": "text",
-                        "content": "Returns:",
-                        "focusable": false
-                    },
-                    {
-                        "type": "attribute",
-                        "name": "returns",
-                        "tag": "select-value",
-                        "required": true,
-                        "options": {
-                            "placeholder": "Select a value"
+                        "style": {
+                            "css": [
+                                "template-top-spacing"
+                            ]
                         }
                     },
                     {
-                        "type": "attribute",
-                        "name": "returns",
-                        "tag": "dynamic-value"
+                        "type": "container",
+                        "content": [
+                            {
+                                "type": "container",
+                                "content": [
+                                    {
+                                        "kind": "static",
+                                        "type": "text",
+                                        "content": "RETURNS",
+                                        "focusable": false,
+                                        "style": {
+                                            "css": [
+                                                "template-label"
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "type": "attribute",
+                                        "name": "returns",
+                                        "tag": "select-value",
+                                        "required": true,
+                                        "options": {
+                                            "placeholder": "Select a value"
+                                        }
+                                    }
+                                ],
+                                "layout": {
+                                    "type": "flex",
+                                    "orientation": "row",
+                                    "wrappable": true,
+                                    "alignItems": "center",
+                                    "justifyContent": "start"
+                                },
+                                "style": {
+                                    "css": [
+                                        "template-top-spacing"
+                                    ]
+                                },
+                                "focusable": false
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "returns",
+                                "tag": "dynamic-value"
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "column",
+                            "wrappable": true,
+                            "alignItems": "start",
+                            "justifyContent": "start"
+                        },
+                        "style": {
+                            "css": [
+                                "template-separation"
+                            ]
+                        },
+                        "focusable": false
                     }
                 ],
                 "layout": {
@@ -1338,6 +1812,11 @@
                     "wrappable": true,
                     "alignItems": "start",
                     "justifyContent": "start"
+                },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
                 },
                 "focusable": true
             }
@@ -1372,7 +1851,12 @@
                                 "focusable": false,
                                 "hidden": false,
                                 "asHTML": true,
-                                "content": "is a"
+                                "content": "IS A",
+                                "style": {
+                                    "css": [
+                                        "template-label-with-left-spacing"
+                                    ]
+                                }
                             },
                             {
                                 "type": "attribute",
@@ -1388,7 +1872,7 @@
                             "type": "flex",
                             "orientation": "row",
                             "wrappable": true,
-                            "alignItems": "start",
+                            "alignItems": "center",
                             "justifyContent": "start"
                         },
                         "focusable": false
@@ -1406,6 +1890,11 @@
                     "alignItems": "start",
                     "justifyContent": "start"
                 },
+                "style": {
+                    "css": [
+                        "template-item-proj"
+                    ]
+                },
                 "focusable": false
             }
         },
@@ -1421,25 +1910,37 @@
                 "type": "choice",
                 "choice": {
                     "option": {
-                        "template": { "tag": "choice" },
+                        "template": {
+                            "tag": "choice"
+                        },
                         "style": {
-                            "css": ["select-choice__list-option"]
+                            "css": [
+                                "select-choice__list-option"
+                            ]
                         }
                     },
                     "style": {
-                        "css": ["select-choice__list"]
+                        "css": [
+                            "select-choice__list"
+                        ]
                     }
                 },
                 "expanded": false,
                 "input": false,
                 "style": {
-                    "css": ["select-choice"]
+                    "css": [
+                        "select-choice"
+                    ]
                 }
             }
         },
         {
-            "concept":{ "name": "string-type" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "string-type"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1455,8 +1956,12 @@
             }
         },
         {
-            "concept":{ "name": "bool-type" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "bool-type"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1472,8 +1977,12 @@
             }
         },
         {
-            "concept":{ "name": "number-type" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "number-type"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1489,8 +1998,12 @@
             }
         },
         {
-            "concept":{ "name": "set-type" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "set-type"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1506,8 +2019,12 @@
             }
         },
         {
-            "concept":{ "name": "user-concept-type" },
-            "tags": [ "choice" ],
+            "concept": {
+                "name": "user-concept-type"
+            },
+            "tags": [
+                "choice"
+            ],
             "type": "layout",
             "content": {
                 "type": "wrap",
@@ -1523,8 +2040,12 @@
             }
         },
         {
-            "concept": { "name": "type" },
-            "tags": ["dynamic-type"],
+            "concept": {
+                "name": "type"
+            },
+            "tags": [
+                "dynamic-type"
+            ],
             "type": "layout",
             "content": {
                 "type": "flex",
@@ -1540,8 +2061,12 @@
             }
         },
         {
-            "concept": { "name": "string-type" },
-            "tags": ["type-proj"],
+            "concept": {
+                "name": "string-type"
+            },
+            "tags": [
+                "type-proj"
+            ],
             "type": "layout",
             "content": {
                 "type": "flex",
@@ -1550,8 +2075,12 @@
             }
         },
         {
-            "concept": { "name": "bool-type" },
-            "tags": ["type-proj"],
+            "concept": {
+                "name": "bool-type"
+            },
+            "tags": [
+                "type-proj"
+            ],
             "type": "layout",
             "content": {
                 "type": "flex",
@@ -1560,8 +2089,12 @@
             }
         },
         {
-            "concept": { "name": "number-type" },
-            "tags": ["type-proj"],
+            "concept": {
+                "name": "number-type"
+            },
+            "tags": [
+                "type-proj"
+            ],
             "type": "layout",
             "content": {
                 "type": "flex",
@@ -1570,41 +2103,77 @@
             }
         },
         {
-            "concept": { "name": "set-type" },
-            "tags": ["type-proj"],
-            "type": "layout",
-            "content": {
-                "type": "flex",
-                "orientation": "horizontal",
-                "disposition": [
+            "concept": {
+                "name": "set-type"
+            },
+            "tags": [
+                "type-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
                     {
-                        "kind": "static",
-                        "type": "text",
-                        "focusable": true,
-                        "hidden": false,
-                        "asHTML": true,
-                        "content": "Set of: "
+                        "type": "container",
+                        "content": [
+                            {
+                                "kind": "static",
+                                "type": "text",
+                                "focusable": true,
+                                "hidden": false,
+                                "asHTML": true,
+                                "content": "SET OF",
+                                "style": {
+                                    "css": [
+                                        "template-label"
+                                    ]
+                                }
+                            },
+                            {
+                                "type": "attribute",
+                                "name": "set-of",
+                                "tag": "select-type",
+                                "required": true,
+                                "options": {
+                                    "placeholder": "Select a type"
+                                }
+                            }
+                        ],
+                        "layout": {
+                            "type": "flex",
+                            "orientation": "row",
+                            "wrappable": false,
+                            "alignItems": "center",
+                            "justifyContent": "start"
+                        },
+                        "focusable": false
                     },
                     {
                         "type": "attribute",
-                        "name": "type",
-                        "tag": "select-type",
-                        "required": true,
-                        "options": {
-                            "placeholder": "Select a type"
-                        }
-                    },
-                    {
-                        "type": "attribute",
-                        "name": "type",
+                        "name": "set-of",
                         "tag": "dynamic-type"
                     }
-                ]
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "column",
+                    "wrappable": false,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "style": {
+                    "css": [
+                        "template-indentation"
+                    ]
+                }
             }
         },
         {
-            "concept": { "name": "user-concept-type" },
-            "tags": ["type-proj"],
+            "concept": {
+                "name": "user-concept-type"
+            },
+            "tags": [
+                "type-proj"
+            ],
             "type": "layout",
             "content": {
                 "type": "flex",
@@ -1649,34 +2218,20 @@
                                 }
                             },
                             "style": {
-                                "css": ["template-value-list"]
+                                "css": [
+                                    "template-set-proj"
+                                ]
                             }
                         },
                         "action": {
-                            "add": false,
-                            "remove": {
-                                "content": [
-                                    {
-                                        "type": "static",
-                                        "static": {
-                                            "type": "text",
-                                            "content": "qqqqq",
-                                            "focusable": false
-                                        }
-                                    }
-                                ],
-                                "help": "Remove element",
-                                "style": {
-                                    "css": ["textual-list__btn-remove"]
-                                }
-                            }
+                            "add": false
                         }
                     }
                 ],
                 "layout": {
                     "type": "flex",
                     "orientation": "column",
-                    "wrappable": true,
+                    "wrappable": false,
                     "alignItems": "start",
                     "justifyContent": "start"
                 },
@@ -1708,7 +2263,9 @@
                                 }
                             },
                             "style": {
-                                "css": ["template-value-list"]
+                                "css": [
+                                    "template-set-proj"
+                                ]
                             }
                         },
                         "action": {
@@ -1731,7 +2288,7 @@
                 "name": "set"
             },
             "tags": [
-                "let-def-set-proj"
+                "variable-def-set-proj"
             ],
             "container": {
                 "type": "container",
@@ -1747,11 +2304,13 @@
                         "list": {
                             "item": {
                                 "template": {
-                                    "tag": "let-def-proj"
+                                    "tag": "variable-def-proj"
                                 }
                             },
                             "style": {
-                                "css": ["template-value-list"]
+                                "css": [
+                                    "template-set-proj"
+                                ]
                             }
                         },
                         "action": {
@@ -1794,7 +2353,9 @@
                                 }
                             },
                             "style": {
-                                "css": ["template-value-list"]
+                                "css": [
+                                    "template-set-proj"
+                                ]
                             }
                         },
                         "action": {
@@ -1845,18 +2406,43 @@
                     "alignItems": "start",
                     "justifyContent": "start"
                 },
-                "focusable": true,
-                "style": {
-                    "text": {},
-                    "box": {
-                        "background": {
-                            "color": null
-                        },
-                        "border": {},
-                        "corner": null,
-                        "opacity": 100
+                "focusable": true
+            }
+        },
+        {
+            "concept": {
+                "name": "string"
+            },
+            "tags": [
+                "multiline-string-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "field",
+                        "type": "text",
+                        "focusable": true,
+                        "readonly": false,
+                        "disabled": false,
+                        "hidden": false,
+                        "source": null,
+                        "multiline": true,
+                        "resizable": false,
+                        "input": {
+                            "type": "text",
+                            "placeholder": ""
+                        }
                     }
-                }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "row",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
             }
         },
         {
@@ -1908,7 +2494,7 @@
                     {
                         "kind": "field",
                         "type": "binary",
-                        "focusable": true,
+                        "focusable": false,
                         "readonly": false,
                         "disabled": false,
                         "hidden": false,
@@ -1931,6 +2517,43 @@
                 },
                 "focusable": true
             }
+        },
+        {
+            "concept": {
+                "name": "boolean"
+            },
+            "tags": [
+                "text-placeholder-box-proj"
+            ],
+            "container": {
+                "type": "container",
+                "content": [
+                    {
+                        "kind": "field",
+                        "type": "binary",
+                        "focusable": false,
+                        "readonly": false,
+                        "disabled": false,
+                        "hidden": false,
+                        "source": null,
+                        "state": {},
+                        "checkbox": {
+                            "position": "before",
+                            "label": {
+                                "content": "Substitute placeholders"
+                            }
+                        }
+                    }
+                ],
+                "layout": {
+                    "type": "flex",
+                    "orientation": "row",
+                    "wrappable": true,
+                    "alignItems": "start",
+                    "justifyContent": "start"
+                },
+                "focusable": true
+            }
         }
     ],
     "template": [
@@ -1938,7 +2561,10 @@
             "type": "template",
             "name": "creation-button-list",
             "param": [
-                { "name": "target-attribute", "type": "string" }
+                {
+                    "name": "target-attribute",
+                    "type": "string"
+                }
             ],
             "content": [
                 {
@@ -1956,9 +2582,14 @@
                                 "type": "CREATE-CONCRETE",
                                 "target": {
                                     "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
                                 },
-                                "value": { "name": "text" }
+                                "value": {
+                                    "name": "text"
+                                }
                             },
                             "content": [
                                 {
@@ -1971,7 +2602,9 @@
                                 }
                             ],
                             "style": {
-                                "css": ["container__btn-element"]
+                                "css": [
+                                    "container__btn-element"
+                                ]
                             }
                         },
                         {
@@ -1985,9 +2618,14 @@
                                 "type": "CREATE-CONCRETE",
                                 "target": {
                                     "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
                                 },
-                                "value": { "name": "for-each" }
+                                "value": {
+                                    "name": "for-each"
+                                }
                             },
                             "content": [
                                 {
@@ -2000,7 +2638,9 @@
                                 }
                             ],
                             "style": {
-                                "css": ["container__btn-element"]
+                                "css": [
+                                    "container__btn-element"
+                                ]
                             }
                         },
                         {
@@ -2014,9 +2654,14 @@
                                 "type": "CREATE-CONCRETE",
                                 "target": {
                                     "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
                                 },
-                                "value": { "name": "condition" }
+                                "value": {
+                                    "name": "condition"
+                                }
                             },
                             "content": [
                                 {
@@ -2029,7 +2674,9 @@
                                 }
                             ],
                             "style": {
-                                "css": ["container__btn-element"]
+                                "css": [
+                                    "container__btn-element"
+                                ]
                             }
                         },
                         {
@@ -2043,9 +2690,14 @@
                                 "type": "CREATE-CONCRETE",
                                 "target": {
                                     "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
                                 },
-                                "value": { "name": "let" }
+                                "value": {
+                                    "name": "let"
+                                }
                             },
                             "content": [
                                 {
@@ -2058,7 +2710,9 @@
                                 }
                             ],
                             "style": {
-                                "css": ["container__btn-element"]
+                                "css": [
+                                    "container__btn-element"
+                                ]
                             }
                         },
                         {
@@ -2072,9 +2726,14 @@
                                 "type": "CREATE-CONCRETE",
                                 "target": {
                                     "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
                                 },
-                                "value": { "name": "output-sequence" }
+                                "value": {
+                                    "name": "sequence"
+                                }
                             },
                             "content": [
                                 {
@@ -2087,7 +2746,9 @@
                                 }
                             ],
                             "style": {
-                                "css": ["container__btn-element"]
+                                "css": [
+                                    "container__btn-element"
+                                ]
                             }
                         },
                         {
@@ -2101,9 +2762,14 @@
                                 "type": "CREATE-CONCRETE",
                                 "target": {
                                     "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
                                 },
-                                "value": { "name": "call" }
+                                "value": {
+                                    "name": "call"
+                                }
                             },
                             "content": [
                                 {
@@ -2116,7 +2782,9 @@
                                 }
                             ],
                             "style": {
-                                "css": ["container__btn-element"]
+                                "css": [
+                                    "container__btn-element"
+                                ]
                             }
                         },
                         {
@@ -2130,9 +2798,14 @@
                                 "type": "CREATE-CONCRETE",
                                 "target": {
                                     "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
                                 },
-                                "value": { "name": "member-access" }
+                                "value": {
+                                    "name": "member-access"
+                                }
                             },
                             "content": [
                                 {
@@ -2145,7 +2818,9 @@
                                 }
                             ],
                             "style": {
-                                "css": ["container__btn-element"]
+                                "css": [
+                                    "container__btn-element"
+                                ]
                             }
                         },
                         {
@@ -2159,9 +2834,14 @@
                                 "type": "CREATE-CONCRETE",
                                 "target": {
                                     "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
                                 },
-                                "value": { "name": "concept-set" }
+                                "value": {
+                                    "name": "concept-set"
+                                }
                             },
                             "content": [
                                 {
@@ -2174,7 +2854,9 @@
                                 }
                             ],
                             "style": {
-                                "css": ["container__btn-element"]
+                                "css": [
+                                    "container__btn-element"
+                                ]
                             }
                         },
                         {
@@ -2188,9 +2870,14 @@
                                 "type": "CREATE-CONCRETE",
                                 "target": {
                                     "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
                                 },
-                                "value": { "name": "var" }
+                                "value": {
+                                    "name": "var"
+                                }
                             },
                             "content": [
                                 {
@@ -2203,7 +2890,9 @@
                                 }
                             ],
                             "style": {
-                                "css": ["container__btn-element"]
+                                "css": [
+                                    "container__btn-element"
+                                ]
                             }
                         },
                         {
@@ -2217,9 +2906,14 @@
                                 "type": "CREATE-CONCRETE",
                                 "target": {
                                     "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
                                 },
-                                "value": { "name": "number-literal" }
+                                "value": {
+                                    "name": "number-literal"
+                                }
                             },
                             "content": [
                                 {
@@ -2232,7 +2926,9 @@
                                 }
                             ],
                             "style": {
-                                "css": ["container__btn-element"]
+                                "css": [
+                                    "container__btn-element"
+                                ]
                             }
                         },
                         {
@@ -2246,9 +2942,14 @@
                                 "type": "CREATE-CONCRETE",
                                 "target": {
                                     "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
                                 },
-                                "value": { "name": "bool-literal" }
+                                "value": {
+                                    "name": "bool-literal"
+                                }
                             },
                             "content": [
                                 {
@@ -2261,36 +2962,9 @@
                                 }
                             ],
                             "style": {
-                                "css": ["container__btn-element"]
-                            }
-                        },
-                        {
-                            "kind": "static",
-                            "type": "button",
-                            "focusable": true,
-                            "hidden": false,
-                            "trigger": false,
-                            "disabled": false,
-                            "action": {
-                                "type": "CREATE-CONCRETE",
-                                "target": {
-                                    "type": "attribute",
-                                    "name": { "type": "param", "name": "target-attribute" }
-                                },
-                                "value": { "name": "set-literal" }
-                            },
-                            "content": [
-                                {
-                                    "kind": "static",
-                                    "type": "text",
-                                    "focusable": true,
-                                    "hidden": false,
-                                    "asHTML": true,
-                                    "content": "+SET"
-                                }
-                            ],
-                            "style": {
-                                "css": ["container__btn-element"]
+                                "css": [
+                                    "container__btn-element"
+                                ]
                             }
                         }
                     ],

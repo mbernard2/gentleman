@@ -1,15 +1,81 @@
-.template-output-sequence {
-    margin-left: 3px;
-    padding-left: 3px;
-    border-left: 1px solid #ddd;
+.template-set-proj {
+    display: flex;
+    flex-direction: column;
 }
 
-.template-value-list {
-    flex-flow: column;
+.template-set-proj .projection__btn-collapse {
+    display: none;
 }
 
-.template-label {
+.template-set-proj .projection__btn-delete {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.template-set-proj .projection__btn-delete::before {
+    line-height: 1;
+}
+
+.template-set-proj > * {
+    padding-left: 25px;
+}
+
+.template-label, .template-label-with-left-spacing {
+    margin-right: 5px;
     font-weight: bold;
     font-size: 80%;
-    line-height: 125%;
+    vertical-align: middle;
+}
+
+.template-label-with-left-spacing {
+    margin-left: 5px;
+}
+
+.template-item-proj {
+    position: relative;
+    margin-top: 5px;
+}
+
+.template-item-proj .field--checkbox__label {
+    font-variant: all-small-caps;
+    padding-left: 5px;
+    line-height: 150%;
+}
+
+.template-item-proj input.field--textbox__input {
+    border: none;
+    border-bottom: 1px solid #aaa;
+    padding: 2px;
+}
+
+.template-item-proj textarea.field--textbox__input {
+    border: 1px solid #aaa;
+    padding: 2px;
+}
+
+.editor-concept > .template-item-proj {
+    margin: 5px;
+}
+
+.template-separation {
+    margin-top: 5px;
+    border-top: 1px dashed #aaa
+}
+
+.template-indentation {
+    border-left: 1px solid #aaa;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding-left: 10px;
+    margin-left: 5px;
+    padding-bottom: 5px;
+    margin-top: 5px;
+}
+
+.template-top-spacing {
+    margin-top: 5px;
 }
