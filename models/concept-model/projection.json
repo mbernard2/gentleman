@@ -1026,16 +1026,24 @@
         {
             "concept": { "name": "concept primitive" },
             "tags": ["choice-selection"],
-            "type": "layout",
-            "content": {
-                "type": "wrap",
-                "disposition": [
+            "type": "container",
+            "container": {
+                "content": [
                     {
                         "type": "attribute",
                         "name": "concept",
                         "tag": "textual"
+                    },
+                    {
+                        "type": "attribute",
+                        "name": "default",
+                        "tag": "textual",
+                        "options": {
+                            "placeholder": "default concept"
+                        }
                     }
-                ]
+                ],
+                "layout": { "type": "flex", "orientation": "column" }
             }
         },
         {

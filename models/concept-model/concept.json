@@ -437,6 +437,12 @@
                         ]
                     },
                     "required": true
+                },
+                {
+                    "name": "default",
+                    "target": {
+                        "name": "string"
+                    }
                 }
             ],
             "properties": [
