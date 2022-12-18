@@ -455,10 +455,7 @@ export function typecheckTemplate(userConcepts, templateInstances) {
         }
     }
 
-    console.log("userConcepts", userConcepts);
-    console.log("templateInstances", templateInstances);
-    console.log("globalEnv", globalEnv);
-    console.log("errors", errors);
+    return errors;
 }
 
 function typecheckFile(file, env, userConcepts, errors) {

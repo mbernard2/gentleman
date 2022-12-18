@@ -3,6 +3,7 @@ import { createEditor } from "@src";
 import { buildConceptHandler, buildProjectionHandler, buildGraphicalHandler } from "@generator/index.js";
 import { ProjectionEditor, ConceptEditor, TemplateEditor } from "./projection-editor.js";
 import { typecheckTemplate } from "@src/validation/template-typechecker.js";
+import { NotificationType, LogType } from '@utils/index.js';
 
 const CMODEL__EDITOR = require('@models/concept-model/config.json');
 const PMODEL__EDITOR = require('@models/projection-model/config.json');
@@ -650,10 +651,25 @@ const GMODEL__HANDLER = {
 
 const TMODEL_HANDLER = {
     "perform-typechecking": function(userMetamodel) {
-        let instanceArray = [];
-        for (let inst of this.instances.values())
-            instanceArray.push(inst);
-        typecheckTemplate(userMetamodel.concept, instanceArray);
+        if (userMetamodel) {
+            let instanceArray = [];
+            for (let inst of this.instances.values())
+                instanceArray.push(inst);
+            let errors = typecheckTemplate(userMetamodel.concept, instanceArray);
+            this.clearError();
+
+            if (errors.length > 0) {
+                for (let err of errors) {
+                    this.addError({ message: err });
+                }
+                this.logs.add(errors, "Validation errors", LogType.ERROR);
+                this.notify("Validation failed.", NotificationType.ERROR);
+            } else {
+                this.notify("Validation succeeded.", NotificationType.SUCCESS);
+            }
+        } else {
+            this.notify("No metamodel has been uploaded.", NotificationType.WARNING);
+        }
     }
 };
 
