@@ -12,6 +12,10 @@ class Type {
         return false;
     }
 
+    isFullyInstantiated() {
+        return true;
+    }
+
     get() {
         return this;
     }
@@ -63,6 +67,10 @@ class SetType extends Type {
             return other.get().name == "set" && this.setOf.unify(other.get().setOf);
     }
 
+    isFullyInstantiated() {
+        return this.setOf.isFullyInstantiated();
+    }
+
     toString() {
         return `set(${this.setOf.toString()})`
     }
@@ -110,6 +118,15 @@ class FunctionType extends Type {
         }
     }
 
+    isFullyInstantiated() {
+        for (argType of this.argTypes) {
+            if (!argType.isFullyInstantiated())
+                return false;
+        }
+
+        return this.returnType.isFullyInstantiated();
+    }
+
     toString() {
         let args = this.argTypes.map(t => t.toString()).join(", ");
         return `function(${args} -> ${this.returnType.toString()})`;
@@ -132,10 +149,10 @@ class InferredType extends Type {
         if (this.toBeInstanciated()) {
             if (!other.toBeInstanciated()) {
                 this.innerType = other.get();
-                this.assignToAllSiblings(this);
+                return this.assignToAllSiblings(this);
+            } else {
+                return true;
             }
-
-            return true;
         } else {
             // Check if `this` and `other` either :
             // - are the same
@@ -161,16 +178,24 @@ class InferredType extends Type {
 
                 if (communSupertype) {
                     this.innerType = communSupertype;
-                    this.assignToAllSiblings(communSupertype);
+                    return this.assignToAllSiblings(communSupertype);
+                } else {
+                    return false;
                 }
-
-                return communSupertype != null;
             }
         }
     }
 
     toBeInstanciated() {
         return !this.innerType;
+    }
+
+    isFullyInstantiated() {
+        if (this.innerType) {
+            return this.innerType.isFullyInstantiated();
+        } else {
+            return false;
+        }
     }
 
     get() {
@@ -186,10 +211,15 @@ class InferredType extends Type {
     }
 
     assignToAllSiblings(type) {
+        let result = true;
         for (let sibling of this.siblings) {
-            if (!sibling.get().unify(type))
-                sibling.unify(type);
+            if (!sibling.get().unify(type)) {
+                if (!sibling.unify(type)) {
+                    result = false;
+                }
+            }
         }
+        return result;
     }
 }
 
@@ -248,7 +278,7 @@ const BUILTIN_FUNCTIONS = EnvLinkedList.toLinkedList([
 ]);
 
 export function typecheckTemplate(userConcepts, templateInstances) {
-    let globalSymbols = BUILTIN_FUNCTIONS;
+    let globalEnv = BUILTIN_FUNCTIONS;
     let validFunctionConcepts = [];
     let validGlobalVarConcepts = [];
 
@@ -263,7 +293,7 @@ export function typecheckTemplate(userConcepts, templateInstances) {
             let name = getAttributeValue(concept, "name");
 
             if (name) {
-                if (!globalSymbols.findType(name.value)) {
+                if (!globalEnv.findType(name.value)) {
                     let paramTypes = [];
                     let valid = true;
 
@@ -291,10 +321,10 @@ export function typecheckTemplate(userConcepts, templateInstances) {
                     }
 
                     if (valid) {
-                        globalSymbols = new EnvLinkedList(
+                        globalEnv = new EnvLinkedList(
                             name.value,
                             new FunctionType(paramTypes, new InferredType()),
-                            globalSymbols);
+                            globalEnv);
                         validFunctionConcepts.push(concept);
                     }
                 } else {
@@ -315,12 +345,12 @@ export function typecheckTemplate(userConcepts, templateInstances) {
             let name = getAttributeValue(concept, "name");
 
             if (name) {
-                if (!globalSymbols.findType(name.value)) {
+                if (!globalEnv.findType(name.value)) {
                     // not already defined
-                    globalSymbols = new EnvLinkedList(
+                    globalEnv = new EnvLinkedList(
                         name.value,
                         new InferredType(),
-                        globalSymbols);
+                        globalEnv);
                     validGlobalVarConcepts.push(concept);
                 } else {
                     errors.push(`Duplicate symbol ${name.value}`);
@@ -334,11 +364,11 @@ export function typecheckTemplate(userConcepts, templateInstances) {
     // 3. Infer function return types.
     for (let fnConcept of validFunctionConcepts) {
         let name = getAttributeValue(fnConcept, "name").value;
-        let fnType = globalSymbols.findType(name);
+        let fnType = globalEnv.findType(name);
         let returnValue = getAttributeValue(fnConcept, "returns");
         let paramSet = getAttributeValue(fnConcept, "params");
 
-        let functionEnv = globalSymbols; // will contain param types
+        let functionEnv = globalEnv; // will contain param types
 
         let i = 0;
         for (let param of paramSet.value) {
@@ -358,7 +388,7 @@ export function typecheckTemplate(userConcepts, templateInstances) {
             let result = fnType.returnType.unify(returnType);
             
             if (!result) {
-                errors.push(`Type mismatch in function ${name}: returns ${result.toString()}, expected ${fnType.toString()}`)
+                errors.push(`Type mismatch in function ${name}: returns ${returnType.toString()}, expected ${fnType.returnType.toString()}`)
             }
         } else {
             errors.push(`Could not infer return type of function ${name}`);
@@ -367,19 +397,91 @@ export function typecheckTemplate(userConcepts, templateInstances) {
 
     // 4. Infer global variable types.
     for (let varConcept of validGlobalVarConcepts) {
-        
+        let name = getAttributeValue(varConcept, "name").value;
+        let varValue = getAttributeValue(varConcept, "value");
+        let varType = globalEnv.findType(name);
+
+        if (varValue) {
+            varValue = varValue.value;
+            let computedType = computeValueType(varValue, globalEnv, userConcepts, errors);
+
+            if (computedType) {
+                // Instantiate type
+                let result = varType.unify(computedType);
+                            
+                if (!result) {
+                    errors.push(`Type mismatch in variable ${name}: is a ${computedType.toString()}, expected ${varType.toString()}`)
+                }
+            } else {
+                errors.push(`Could not infer type of variable ${name}`);
+            }
+        } else {
+            errors.push(`Variable ${name} has no value`);
+        }
     }
 
-    // 5. Make sure all types have been effectively inferred.
-    
+    // 5. Validate "file" and "for-each-file" instances.
+    for (let instance of templateInstances) {
+        let concept = instance.concept.getValue();
 
-    // 6. Validate "file" and "for-each-file" instances.
+        if (concept.name == "for-each-file") {
+            let varName = getAttributeValue(concept, "varname");
+            let inExp = getAttributeValue(concept, "in");
+            let file = getAttributeValue(concept, "file");
 
+            if (varName && inExp) {
+                varName = varName.value;
+                let inType = computeValueType(inExp.value, globalEnv, userConcepts, errors);
+                let itemType = new InferredType();
+
+                if (inType && inType.unify(new SetType(itemType))) {
+                    let loopEnv = new EnvLinkedList(varName, itemType, globalEnv);
+                    typecheckFile(file, loopEnv, userConcepts, errors);
+                } else {
+                    errors.push("Expected set in for-each-file, after \"in\"");
+                }
+            } else {
+                errors.push("Incomplete for-each-file definition");
+            }
+        } else if (concept.name == "file") {
+            typecheckFile(concept, globalEnv, userConcepts, errors);
+        }
+    }
+
+    // 6. Make sure all types have been effectively inferred.
+    for (let def in globalEnv.iterator()) {
+        if (!def.type.isFullyInstantiated()) {
+            errors.push(`Type of ${def.name} could not be fully instantiated`);
+        }
+    }
 
     console.log("userConcepts", userConcepts);
     console.log("templateInstances", templateInstances);
-    console.log("globalSymbols", globalSymbols);
+    console.log("globalEnv", globalEnv);
     console.log("errors", errors);
+}
+
+function typecheckFile(file, env, userConcepts, errors) {
+    let fileName = getAttributeValue(file, "name");
+    let contents = getAttributeValue(file, "contents");
+
+    if (fileName && contents) {
+        fileName = fileName.value;
+        contents = contents.value;
+
+        let fileNameType = computeValueType(fileName, env, userConcepts, errors);
+        let contentsType = computeValueType(contents, env, userConcepts, errors);
+
+        if (fileNameType && fileNameType.getSupertypes().find(t => t.unify(VALUE_SUPERTYPE))) {
+            if (!(contentsType && contentsType.getSupertypes().find(t => t.unify(VALUE_SUPERTYPE)))) {
+                errors.push("File contents is not a value");
+            }
+        } else {
+            errors.push("File name is not a value");
+        }
+    } else {
+        errors.push("Incomplete file definition");
+    }
 }
 
 function decodeType(typeConcept) {
