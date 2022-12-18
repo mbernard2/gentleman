@@ -323,7 +323,7 @@
     .app-editor-aside-header {
         position: relative;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         padding: 10px 12px;
         background-color: #fff;
         border-bottom: 4px solid #738CFF;
@@ -338,13 +338,16 @@
         color: #222;
     }
 
-.app-uploader {
+.app-uploader, .app-typecheck-button {
     cursor: pointer;
 }
 
-.app-uploader-label {
+.app-typecheck-button {
+    margin-left: 6px;
+}
+
+.app-uploader-label, .app-typecheck-button-label {
     display: block; 
-    width: 120px;
     padding: 6px;
     text-align: center;
     font-size: 1.3em; font-weight: 500;
@@ -354,6 +357,15 @@
 }
     .app-uploader-label:hover {
         background-color: #404080;
+    }
+
+.app-typecheck-button-label {
+    background-color: #e5e4e2;
+    color: #555;
+}
+
+    .app-typecheck-button-label:hover {
+        background-color: #c0c0c0;
     }
 
 .app-model-concept {

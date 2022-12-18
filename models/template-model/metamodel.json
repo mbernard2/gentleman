@@ -170,7 +170,7 @@
                     "name": "in",
                     "target": {
                         "name": "value",
-                        "default": "var"
+                        "default": "concept-set"
                     },
                     "required": true
                 },

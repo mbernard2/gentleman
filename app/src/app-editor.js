@@ -1,21 +1,13 @@
 import { createUnorderedList, createListItem, getElement, createSpan, hasOwn, findAncestor, isHTMLElement, isNullOrUndefined, isFunction, createParagraph, } from "zenkai";
 import { createEditor } from "@src";
 import { buildConceptHandler, buildProjectionHandler, buildGraphicalHandler } from "@generator/index.js";
-import { ProjectionEditor, ConceptEditor } from "./projection-editor.js";
-
-
-// let CMODEL__CONCEPT = null;
-// let CMODEL__PROJECTION = null;
-/*let PMODEL__CONCEPT = null;
-let PMODEL__PROJECTION = null;*/
-/*let SMODEL__CONCEPT = null;
-let SMODEL__PROJECTION = null;*/
-let GMODEL__CONCEPT = null;
-let GMODEL__PROJECTION = null;
+import { ProjectionEditor, ConceptEditor, TemplateEditor } from "./projection-editor.js";
+import { typecheckTemplate } from "@src/validation/template-typechecker.js";
 
 const CMODEL__EDITOR = require('@models/concept-model/config.json');
 const PMODEL__EDITOR = require('@models/projection-model/config.json');
 const GMODEL__EDITOR = require('./../../models/graphical-model/config.json');
+const TMODEL__EDITOR = require('@models/template-model/config.json');
 
 const CMODEL__CONCEPT = require('@models/concept-model/concept.json');
 const CMODEL__PROJECTION = require('@models/concept-model/projection.json');
@@ -26,9 +18,11 @@ const SMODEL__PROJECTION = require('@models/style-model/projection.json');
 const PMODEL__CONCEPT = require('@models/projection-model/concept.json');
 const PMODEL__PROJECTION = require('@models/projection-model/projection.json');
 
+const GMODEL__CONCEPT = require('./../../models/graphical-model/concept.json');
+const GMODEL__PROJECTION = require('./../../models/graphical-model/projection.json');
 
-GMODEL__CONCEPT = require('./../../models/graphical-model/concept.json');
-GMODEL__PROJECTION = require('./../../models/graphical-model/projection.json');
+const TMODEL__CONCEPT = require('@models/template-model/metamodel.json');
+const TMODEL__PROJECTION = require('@models/template-model/projection.json');
 
 var inc = 0;
 const nextId = () => `GE${inc++}`;
@@ -366,7 +360,12 @@ export const App = {
                 }));
                 this.changeTab(tab);
             } else if (action === "new-template") {
-                this.notify("Cette fonction n'est pas encore implémentée");
+                let tab = createTab.call(this, "TM");
+                let editor = createTemplateEditor.call(this);
+
+                editor.hide();
+                this.addTab(tab, editor);
+                this.changeTab(tab);
             }
         });
 
@@ -649,6 +648,15 @@ const GMODEL__HANDLER = {
     },
 };
 
+const TMODEL_HANDLER = {
+    "perform-typechecking": function(userMetamodel) {
+        let instanceArray = [];
+        for (let inst of this.instances.values())
+            instanceArray.push(inst);
+        typecheckTemplate(userMetamodel.concept, instanceArray);
+    }
+};
+
 
 /**
  * 
@@ -803,4 +811,18 @@ function createGraphicEditor() {
     }
 
     // let btnPreview = createMenuButton.call(this, "preview-projection", "Preview", editor);
+}
+
+function createTemplateEditor() {
+    let editor = this.createEditor({
+        conceptModel: TMODEL__CONCEPT,
+        projectionModel: TMODEL__PROJECTION,
+        config: TMODEL__EDITOR,
+        handlers: TMODEL_HANDLER
+    });
+
+    let wrapper = Object.create(TemplateEditor).init(editor);
+    this.editorSection.append(wrapper.render());
+
+    return editor;
 }
