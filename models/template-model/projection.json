@@ -2660,7 +2660,7 @@
                                     }
                                 },
                                 "value": {
-                                    "name": "condition"
+                                    "name": "var"
                                 }
                             },
                             "content": [
@@ -2670,79 +2670,7 @@
                                     "focusable": true,
                                     "hidden": false,
                                     "asHTML": true,
-                                    "content": "+COND"
-                                }
-                            ],
-                            "style": {
-                                "css": [
-                                    "container__btn-element"
-                                ]
-                            }
-                        },
-                        {
-                            "kind": "static",
-                            "type": "button",
-                            "focusable": true,
-                            "hidden": false,
-                            "trigger": false,
-                            "disabled": false,
-                            "action": {
-                                "type": "CREATE-CONCRETE",
-                                "target": {
-                                    "type": "attribute",
-                                    "name": {
-                                        "type": "param",
-                                        "name": "target-attribute"
-                                    }
-                                },
-                                "value": {
-                                    "name": "let"
-                                }
-                            },
-                            "content": [
-                                {
-                                    "kind": "static",
-                                    "type": "text",
-                                    "focusable": true,
-                                    "hidden": false,
-                                    "asHTML": true,
-                                    "content": "+LET"
-                                }
-                            ],
-                            "style": {
-                                "css": [
-                                    "container__btn-element"
-                                ]
-                            }
-                        },
-                        {
-                            "kind": "static",
-                            "type": "button",
-                            "focusable": true,
-                            "hidden": false,
-                            "trigger": false,
-                            "disabled": false,
-                            "action": {
-                                "type": "CREATE-CONCRETE",
-                                "target": {
-                                    "type": "attribute",
-                                    "name": {
-                                        "type": "param",
-                                        "name": "target-attribute"
-                                    }
-                                },
-                                "value": {
-                                    "name": "sequence"
-                                }
-                            },
-                            "content": [
-                                {
-                                    "kind": "static",
-                                    "type": "text",
-                                    "focusable": true,
-                                    "hidden": false,
-                                    "asHTML": true,
-                                    "content": "+CONCAT"
+                                    "content": "+VAR"
                                 }
                             ],
                             "style": {
@@ -2804,6 +2732,78 @@
                                     }
                                 },
                                 "value": {
+                                    "name": "let"
+                                }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+LET"
+                                }
+                            ],
+                            "style": {
+                                "css": [
+                                    "container__btn-element"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
+                                },
+                                "value": {
+                                    "name": "condition"
+                                }
+                            },
+                            "content": [
+                                {
+                                    "kind": "static",
+                                    "type": "text",
+                                    "focusable": true,
+                                    "hidden": false,
+                                    "asHTML": true,
+                                    "content": "+COND"
+                                }
+                            ],
+                            "style": {
+                                "css": [
+                                    "container__btn-element"
+                                ]
+                            }
+                        },
+                        {
+                            "kind": "static",
+                            "type": "button",
+                            "focusable": true,
+                            "hidden": false,
+                            "trigger": false,
+                            "disabled": false,
+                            "action": {
+                                "type": "CREATE-CONCRETE",
+                                "target": {
+                                    "type": "attribute",
+                                    "name": {
+                                        "type": "param",
+                                        "name": "target-attribute"
+                                    }
+                                },
+                                "value": {
                                     "name": "member-access"
                                 }
                             },
@@ -2840,7 +2840,7 @@
                                     }
                                 },
                                 "value": {
-                                    "name": "concept-set"
+                                    "name": "sequence"
                                 }
                             },
                             "content": [
@@ -2850,7 +2850,7 @@
                                     "focusable": true,
                                     "hidden": false,
                                     "asHTML": true,
-                                    "content": "+CONCEPTS"
+                                    "content": "+SEQ"
                                 }
                             ],
                             "style": {
@@ -2876,7 +2876,7 @@
                                     }
                                 },
                                 "value": {
-                                    "name": "var"
+                                    "name": "concept-set"
                                 }
                             },
                             "content": [
@@ -2886,7 +2886,7 @@
                                     "focusable": true,
                                     "hidden": false,
                                     "asHTML": true,
-                                    "content": "+VAR"
+                                    "content": "+CONCEPTS"
                                 }
                             ],
                             "style": {
