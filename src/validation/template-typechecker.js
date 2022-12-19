@@ -274,7 +274,18 @@ const BOOL_TYPE = new SimpleType("bool", VALUE_SUPERTYPE);
 const NUMBER_TYPE = new SimpleType("number", VALUE_SUPERTYPE);
 
 const BUILTIN_FUNCTIONS = EnvLinkedList.toLinkedList([
-    ["add", new FunctionType([NUMBER_TYPE, NUMBER_TYPE], NUMBER_TYPE)]
+    ["add", new FunctionType([NUMBER_TYPE, NUMBER_TYPE], NUMBER_TYPE)],
+    ["sub", new FunctionType([NUMBER_TYPE, NUMBER_TYPE], NUMBER_TYPE)],
+    ["prod", new FunctionType([NUMBER_TYPE, NUMBER_TYPE], NUMBER_TYPE)],
+    ["div", new FunctionType([NUMBER_TYPE, NUMBER_TYPE], NUMBER_TYPE)],
+    ["and", new FunctionType([BOOL_TYPE, BOOL_TYPE], BOOL_TYPE)],
+    ["or", new FunctionType([BOOL_TYPE, BOOL_TYPE], BOOL_TYPE)],
+    ["not", new FunctionType([BOOL_TYPE], BOOL_TYPE)],
+    ["at", new FunctionType([new SetType(VALUE_SUPERTYPE)], VALUE_SUPERTYPE)],
+    ["rev", new FunctionType([new SetType(VALUE_SUPERTYPE)], new SetType(VALUE_SUPERTYPE))],
+    ["range", new FunctionType([NUMBER_TYPE, NUMBER_TYPE, NUMBER_TYPE], new SetType(NUMBER_TYPE))],
+    ["join", new FunctionType([new SetType(STRING_TYPE), STRING_TYPE], STRING_TYPE)],
+    ["chars", new FunctionType([STRING_TYPE, new SetType(STRING_TYPE)], new SetType(STRING_TYPE))]
 ]);
 
 export function typecheckTemplate(userConcepts, templateInstances) {
@@ -511,6 +522,10 @@ function decodeType(typeConcept) {
 function computeValueType(valueConcept, env, userConcepts, errors) {
     if (!valueConcept)
         return null;
+    
+    if (valueConcept.nature == "prototype") {
+        valueConcept = valueConcept.value;
+    }
     
     switch (valueConcept.name) {
         case "number-literal":
@@ -759,7 +774,6 @@ function computeMemberAccessType(memberAccessConcept, env, userConcepts, errors)
     let attrName = getAttributeValue(memberAccessConcept, "attr-name");
 
     if (objectToAccess && attrName) {
-        objectToAccess = objectToAccess.value;
         attrName = attrName.value;
 
         let objType = computeValueType(objectToAccess, env, userConcepts, errors);
@@ -767,12 +781,17 @@ function computeMemberAccessType(memberAccessConcept, env, userConcepts, errors)
             if (objType.get() != null) {
                 if (objType.get().name == "user") {
                     let accessedConcept = findConcept(userConcepts, objType.get().conceptName);
-                    let returnedAttr = accessedConcept.attributes.find(a => a.name == attrName);
 
-                    if (returnedAttr) {
-                        return getUserAttributeType(returnedAttr);
+                    if (accessedConcept) {
+                        let returnedAttr = accessedConcept.attributes.find(a => a.name == attrName);
+
+                        if (returnedAttr) {
+                            return getUserAttributeType(returnedAttr);
+                        } else {
+                            errors.push(`User concept ${objType.get().conceptName} has no attribute ${attrName}`);
+                        }
                     } else {
-                        errors.push(`User concept ${objType.get().conceptName} has no attribute ${attrName}`);
+                        errors.push(`User concept ${objType.get().conceptName} not found`);
                     }
                 }
             } else {
@@ -816,7 +835,7 @@ function getAttributeValue(conceptValue, name) {
 }
 
 function findConcept(userConcepts, name) {
-    return userConcepts.find(c => c.nature == "concrete" && c.name == name);
+    return userConcepts.find(c => c.name == name);
 }
 
 function getUserAttributeType(attribute) {
